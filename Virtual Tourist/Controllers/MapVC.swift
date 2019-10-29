@@ -1,5 +1,5 @@
 //
-//  LocationsListVC.swift
+//  ViewController.swift
 //  Virtual Tourist
 //
 //  Created by Vitaliy Paliy on 10/28/19.
@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import MapKit
 
-class LocationsListVC: UIViewController {
+class MapVC: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
+
 }
+

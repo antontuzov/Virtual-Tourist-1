@@ -14,6 +14,8 @@
 		CBDA61942367CB1200CC2393 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBDA61932367CB1200CC2393 /* Assets.xcassets */; };
 		CBDA61972367CB1200CC2393 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBDA61952367CB1200CC2393 /* LaunchScreen.storyboard */; };
 		CBDA61A12367CD5800CC2393 /* LocationsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA61A02367CD5800CC2393 /* LocationsListVC.swift */; };
+		CBDA61A72367D31300CC2393 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA61A62367D31300CC2393 /* Networking.swift */; };
+		CBDA61A92367D46200CC2393 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA61A82367D46200CC2393 /* Secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		CBDA61962367CB1200CC2393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBDA61982367CB1200CC2393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBDA61A02367CD5800CC2393 /* LocationsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListVC.swift; sourceTree = "<group>"; };
+		CBDA61A62367D31300CC2393 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		CBDA61A82367D46200CC2393 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +64,32 @@
 			children = (
 				CBDA618A2367CB0D00CC2393 /* AppDelegate.swift */,
 				CBDA618C2367CB0D00CC2393 /* SceneDelegate.swift */,
+				CBDA61A82367D46200CC2393 /* Secret.swift */,
+				CBDA61A52367D2D100CC2393 /* Assets */,
+				CBDA61A22367CECF00CC2393 /* Controllers */,
+				CBDA61982367CB1200CC2393 /* Info.plist */,
+				CBDA61A62367D31300CC2393 /* Networking.swift */,
+			);
+			path = "Virtual Tourist";
+			sourceTree = "<group>";
+		};
+		CBDA61A22367CECF00CC2393 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				CBDA618E2367CB0D00CC2393 /* MapVC.swift */,
+				CBDA61A02367CD5800CC2393 /* LocationsListVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CBDA61A52367D2D100CC2393 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
 				CBDA61902367CB0D00CC2393 /* Main.storyboard */,
 				CBDA61932367CB1200CC2393 /* Assets.xcassets */,
 				CBDA61952367CB1200CC2393 /* LaunchScreen.storyboard */,
-				CBDA61982367CB1200CC2393 /* Info.plist */,
-				CBDA61A02367CD5800CC2393 /* LocationsListVC.swift */,
 			);
-			path = "Virtual Tourist";
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +164,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBDA618F2367CB0D00CC2393 /* MapVC.swift in Sources */,
+				CBDA61A92367D46200CC2393 /* Secret.swift in Sources */,
 				CBDA61A12367CD5800CC2393 /* LocationsListVC.swift in Sources */,
+				CBDA61A72367D31300CC2393 /* Networking.swift in Sources */,
 				CBDA618B2367CB0D00CC2393 /* AppDelegate.swift in Sources */,
 				CBDA618D2367CB0D00CC2393 /* SceneDelegate.swift in Sources */,
 			);

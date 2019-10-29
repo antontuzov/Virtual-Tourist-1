@@ -7,12 +7,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="XcV-bS-CgJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="za3-wP-hzn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="F7Y-g5-86W" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="biF-Tk-hLb"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="mappin" catalog="system" id="biF-Tk-hLb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t97-oN-H5b">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -21,6 +20,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EhB-6I-Y5t"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="za3-wP-hzn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1058" y="-257"/>
         </scene>
@@ -42,11 +42,11 @@
             </objects>
             <point key="canvasLocation" x="-2326" y="340"/>
         </scene>
-        <!--Item-->
+        <!--Locations-->
         <scene sceneID="ge1-Qg-gHe">
             <objects>
                 <navigationController id="3js-Ba-soP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="R7Y-VC-1ne"/>
+                    <tabBarItem key="tabBarItem" title="Locations" image="list.dash" catalog="system" id="R7Y-VC-1ne"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hKz-MO-qbV">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -59,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="-1059" y="938"/>
         </scene>
-        <!--View Controller-->
+        <!--Locations ListVC-->
         <scene sceneID="Cla-hz-nVh">
             <objects>
-                <viewController id="N4J-Kt-xis" sceneMemberID="viewController">
+                <viewController id="N4J-Kt-xis" customClass="LocationsListVC" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hxw-Lv-l6Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +72,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="annotationCell" rowHeight="100" id="Mae-zt-Xne">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationListCell" rowHeight="100" id="Mae-zt-Xne">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mae-zt-Xne" id="JkI-Dt-KGz">
@@ -87,10 +87,13 @@
                         <viewLayoutGuide key="safeArea" id="A2E-bz-otT"/>
                     </view>
                     <navigationItem key="navigationItem" id="aX3-CV-VXR"/>
+                    <connections>
+                        <outlet property="tableView" destination="V0i-cU-8D6" id="WBD-OO-juM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIn-to-2jI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="228.98550724637684" y="1311.8303571428571"/>
+            <point key="canvasLocation" x="229" y="938"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="tne-QT-ifu">
@@ -114,10 +117,17 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="DjB-28-4dr"/>
+                    <connections>
+                        <outlet property="mapView" destination="KM0-z1-VwK" id="e5c-pe-la9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="228.98550724637684" y="-434.59821428571428"/>
+            <point key="canvasLocation" x="167" y="-257"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list.dash" catalog="system" width="64" height="42"/>
+        <image name="mappin" catalog="system" width="52" height="64"/>
+    </resources>
 </document>
