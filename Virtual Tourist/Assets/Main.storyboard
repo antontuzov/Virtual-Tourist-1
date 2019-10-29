@@ -95,6 +95,63 @@
             </objects>
             <point key="canvasLocation" x="229" y="938"/>
         </scene>
+        <!--Images CollectionVC-->
+        <scene sceneID="mh0-0R-ScE">
+            <objects>
+                <viewController storyboardIdentifier="ImagesCollectionVC" id="6Rh-vM-Ae9" customClass="ImagesCollectionVC" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E3d-Ow-9hs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-e5-A5S">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="dbR-OF-Q3Z">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="estimatedItemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="rlw-RT-U1O" customClass="ImageCollectionViewCell" customModule="Virtual_Tourist" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTO-vw-dvt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <size key="customSize" width="100" height="100"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="kTO-vw-dvt" id="jxn-Y9-5CD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kSw-e5-A5S" firstAttribute="leading" secondItem="Qxx-dC-V6S" secondAttribute="leading" id="A6Z-ke-uWB"/>
+                            <constraint firstItem="kSw-e5-A5S" firstAttribute="top" secondItem="Qxx-dC-V6S" secondAttribute="top" id="Xre-Q5-u7R"/>
+                            <constraint firstItem="kSw-e5-A5S" firstAttribute="trailing" secondItem="Qxx-dC-V6S" secondAttribute="trailing" id="wO9-iX-UhY"/>
+                            <constraint firstAttribute="bottom" secondItem="kSw-e5-A5S" secondAttribute="bottom" id="xkd-4b-HwZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qxx-dC-V6S"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="kSw-e5-A5S" id="bCk-7M-YEL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="auy-OC-xLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1733.3333333333335" y="333.48214285714283"/>
+        </scene>
         <!--MapVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -116,8 +173,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="DjB-28-4dr"/>
+                    <navigationItem key="navigationItem" id="DjB-28-4dr">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="plus" catalog="system" id="nos-iS-nyM">
+                            <connections>
+                                <action selector="addPressed:" destination="BYZ-38-t0r" id="8K3-vY-sK0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="nos-iS-nyM" id="Tq2-Zy-gkU"/>
                         <outlet property="mapView" destination="KM0-z1-VwK" id="e5c-pe-la9"/>
                     </connections>
                 </viewController>
@@ -129,5 +193,6 @@
     <resources>
         <image name="list.dash" catalog="system" width="64" height="42"/>
         <image name="mappin" catalog="system" width="52" height="64"/>
+        <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>
