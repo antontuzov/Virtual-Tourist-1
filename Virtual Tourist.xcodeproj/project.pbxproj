@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		CBDA618B2367CB0D00CC2393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA618A2367CB0D00CC2393 /* AppDelegate.swift */; };
 		CBDA618D2367CB0D00CC2393 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA618C2367CB0D00CC2393 /* SceneDelegate.swift */; };
-		CBDA618F2367CB0D00CC2393 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA618E2367CB0D00CC2393 /* ViewController.swift */; };
+		CBDA618F2367CB0D00CC2393 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA618E2367CB0D00CC2393 /* MapVC.swift */; };
 		CBDA61922367CB0D00CC2393 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBDA61902367CB0D00CC2393 /* Main.storyboard */; };
 		CBDA61942367CB1200CC2393 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBDA61932367CB1200CC2393 /* Assets.xcassets */; };
 		CBDA61972367CB1200CC2393 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBDA61952367CB1200CC2393 /* LaunchScreen.storyboard */; };
+		CBDA61A12367CD5800CC2393 /* LocationsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA61A02367CD5800CC2393 /* LocationsListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CBDA61872367CB0D00CC2393 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDA618A2367CB0D00CC2393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBDA618C2367CB0D00CC2393 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBDA618E2367CB0D00CC2393 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CBDA618E2367CB0D00CC2393 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		CBDA61912367CB0D00CC2393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBDA61932367CB1200CC2393 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBDA61962367CB1200CC2393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBDA61982367CB1200CC2393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBDA61A02367CD5800CC2393 /* LocationsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,12 @@
 			children = (
 				CBDA618A2367CB0D00CC2393 /* AppDelegate.swift */,
 				CBDA618C2367CB0D00CC2393 /* SceneDelegate.swift */,
-				CBDA618E2367CB0D00CC2393 /* ViewController.swift */,
+				CBDA618E2367CB0D00CC2393 /* MapVC.swift */,
 				CBDA61902367CB0D00CC2393 /* Main.storyboard */,
 				CBDA61932367CB1200CC2393 /* Assets.xcassets */,
 				CBDA61952367CB1200CC2393 /* LaunchScreen.storyboard */,
 				CBDA61982367CB1200CC2393 /* Info.plist */,
+				CBDA61A02367CD5800CC2393 /* LocationsListVC.swift */,
 			);
 			path = "Virtual Tourist";
 			sourceTree = "<group>";
@@ -138,7 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBDA618F2367CB0D00CC2393 /* ViewController.swift in Sources */,
+				CBDA618F2367CB0D00CC2393 /* MapVC.swift in Sources */,
+				CBDA61A12367CD5800CC2393 /* LocationsListVC.swift in Sources */,
 				CBDA618B2367CB0D00CC2393 /* AppDelegate.swift in Sources */,
 				CBDA618D2367CB0D00CC2393 /* SceneDelegate.swift in Sources */,
 			);
