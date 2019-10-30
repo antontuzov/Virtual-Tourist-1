@@ -21,6 +21,7 @@
 		CBDA618B2367CB0D00CC2393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA618A2367CB0D00CC2393 /* AppDelegate.swift */; };
 		CBDA618D2367CB0D00CC2393 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA618C2367CB0D00CC2393 /* SceneDelegate.swift */; };
 		CBDDBE8D236A58BF003CC3BC /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBE8B236A58BF003CC3BC /* VirtualTourist.xcdatamodeld */; };
+		CBDDBE8F236A59A1003CC3BC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBE8E236A59A1003CC3BC /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		CBDA618C2367CB0D00CC2393 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CBDA61982367CB1200CC2393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBDDBE8C236A58BF003CC3BC /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
+		CBDDBE8E236A59A1003CC3BC /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				CB4EEA71236900D90026D53D /* PhotoStruct.swift */,
 				CBDDBE8B236A58BF003CC3BC /* VirtualTourist.xcdatamodeld */,
+				CBDDBE8E236A59A1003CC3BC /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB4EEA72236900D90026D53D /* PhotoStruct.swift in Sources */,
+				CBDDBE8F236A59A1003CC3BC /* DataController.swift in Sources */,
 				CB4EEA7F236901040026D53D /* Secrets.swift in Sources */,
 				CB4EEA78236900EE0026D53D /* ImageCollectionViewCell.swift in Sources */,
 				CB4EEA81236901040026D53D /* FlickrResponse.swift in Sources */,
