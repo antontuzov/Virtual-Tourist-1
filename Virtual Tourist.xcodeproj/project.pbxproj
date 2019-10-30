@@ -20,6 +20,7 @@
 		CB4EEA90236901930026D53D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4EEA8D236901930026D53D /* LaunchScreen.storyboard */; };
 		CBDA618B2367CB0D00CC2393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA618A2367CB0D00CC2393 /* AppDelegate.swift */; };
 		CBDA618D2367CB0D00CC2393 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA618C2367CB0D00CC2393 /* SceneDelegate.swift */; };
+		CBDDBE8D236A58BF003CC3BC /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBE8B236A58BF003CC3BC /* VirtualTourist.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CBDA618A2367CB0D00CC2393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBDA618C2367CB0D00CC2393 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CBDA61982367CB1200CC2393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBDDBE8C236A58BF003CC3BC /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				CB4EEA71236900D90026D53D /* PhotoStruct.swift */,
+				CBDDBE8B236A58BF003CC3BC /* VirtualTourist.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				CB4EEA7F236901040026D53D /* Secrets.swift in Sources */,
 				CB4EEA78236900EE0026D53D /* ImageCollectionViewCell.swift in Sources */,
 				CB4EEA81236901040026D53D /* FlickrResponse.swift in Sources */,
+				CBDDBE8D236A58BF003CC3BC /* VirtualTourist.xcdatamodeld in Sources */,
 				CBDA618B2367CB0D00CC2393 /* AppDelegate.swift in Sources */,
 				CB4EEA7A236900EE0026D53D /* LocationsListVC.swift in Sources */,
 				CB4EEA79236900EE0026D53D /* MapVC.swift in Sources */,
@@ -379,6 +383,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CBDDBE8B236A58BF003CC3BC /* VirtualTourist.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CBDDBE8C236A58BF003CC3BC /* VirtualTourist.xcdatamodel */,
+			);
+			currentVersion = CBDDBE8C236A58BF003CC3BC /* VirtualTourist.xcdatamodel */;
+			path = VirtualTourist.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CBDA617F2367CB0D00CC2393 /* Project object */;
 }

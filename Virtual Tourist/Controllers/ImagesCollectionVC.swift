@@ -23,17 +23,8 @@ class ImagesCollectionVC: UIViewController {
     }
     
     @IBAction func refreshButtonPressed(_ sender: Any) {
-//        locationImages = []
-//        FlickrClient.getSearchURL(lat: selectedPin?.coordinate.latitude ?? 0, long: selectedPin?.coordinate.longitude ?? 0, totalPageNum: 50) { (images, pages, error) in
-//            guard error == nil else {
-//                print("Error happened while trying to reload images")
-//                return
-//            }
-//            for i in images {
-//                self.locationImages.append(i.url_m)
-//            }
-//            self.collectionView.reloadData()
-//        }
+        
+        print("Refresh button pressed")
         
     }
     
