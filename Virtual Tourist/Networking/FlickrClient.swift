@@ -32,11 +32,19 @@ class FlickrClient {
         
     }
     
+   
+    
+    class func getRandomPage() -> Int{
+        
+        return Int(arc4random_uniform(250))
+    
+    }
+   
     // Get links to the images.
     
     class func getSearchURL(lat: Double, long: Double, totalPageNum: Int = 0,completion: @escaping ([PhotoStruct], Int, Error?) -> Void){
         
-        let url = Endpoints.searchURL(lat, long, totalPageNum, 100).url
+        let url = Endpoints.searchURL(lat, long, totalPageNum, 1).url
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 print("Error happened while getting search URL: \(error!.localizedDescription)")

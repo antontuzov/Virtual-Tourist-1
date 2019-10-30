@@ -13,10 +13,9 @@ class MapVC: UIViewController{
     
     var lat = Double()
     var long = Double()
-    var imageUrls = [String]()
+    var imageURL = [String]()
     var selectedAnnotation: MKPointAnnotation?
     
-    @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -45,10 +44,7 @@ class MapVC: UIViewController{
                     annotation.title = "Unknown"
                 }else{
                     if let place = placemark?[0] {
-                        if let city = place.locality {
-                            annotation.title = "\(city), \(place.country ?? "")"
-                        }
-                        
+                        annotation.title = "\(place.locality ?? "Unknown"), \(place.country ?? "Unknown")"
                     }
                 }
             }
@@ -57,12 +53,8 @@ class MapVC: UIViewController{
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        imageUrls = []
-    }
-    
-    @IBAction func addPressed(_ sender: Any) {
-        
-        
+        super.viewDidDisappear(animated)
+        imageURL = []
     }
     
     func handleGetImages(){
@@ -72,11 +64,12 @@ class MapVC: UIViewController{
                 return
             }
             for i in images {
-                self.imageUrls.append(i.url_m)
+                self.imageURL.append(i.url_m)
             }
-            print(self.imageUrls.count)
+            print(self.imageURL.count)
             let controller = self.storyboard?.instantiateViewController(identifier: "ImagesCollectionVC") as! ImagesCollectionVC
-            controller.locationImages = self.imageUrls
+            controller.selectedPin = self.selectedAnnotation
+            controller.selectedImgURL = self.imageURL
             self.show(controller, sender: nil)
         }
     }
@@ -110,5 +103,6 @@ extension MapVC: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         self.selectedAnnotation = view.annotation as? MKPointAnnotation
     }
+    
     
 }

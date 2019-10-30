@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class ImagesCollectionVC: UIViewController {
 
-    var locationImages = [String]()
-    
+    var selectedPin: MKPointAnnotation?
+    var selectedImgURL: [String]!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -21,18 +22,32 @@ class ImagesCollectionVC: UIViewController {
         
     }
     
-
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+//        locationImages = []
+//        FlickrClient.getSearchURL(lat: selectedPin?.coordinate.latitude ?? 0, long: selectedPin?.coordinate.longitude ?? 0, totalPageNum: 50) { (images, pages, error) in
+//            guard error == nil else {
+//                print("Error happened while trying to reload images")
+//                return
+//            }
+//            for i in images {
+//                self.locationImages.append(i.url_m)
+//            }
+//            self.collectionView.reloadData()
+//        }
+        
+    }
+    
 }
 
 extension ImagesCollectionVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return locationImages.count
+        return selectedImgURL.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCollectionViewCell
         
-        let image = locationImages[indexPath.row]
+        let image = selectedImgURL[indexPath.row]
         
         FlickrClient.downloadImage(img: image) { (data, error) in
             if let data = data {
@@ -40,12 +55,16 @@ extension ImagesCollectionVC: UICollectionViewDelegate, UICollectionViewDataSour
                 DispatchQueue.main.async {
                     cell.imageView.image = image
                 }
+                cell.setNeedsLayout()
             }
         }
-        
-        
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedImgURL.remove(at: indexPath.row)
+        collectionView.reloadData()
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
     
 }

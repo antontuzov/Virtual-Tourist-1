@@ -104,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-e5-A5S">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="dbR-OF-Q3Z">
                                     <size key="itemSize" width="100" height="100"/>
@@ -134,13 +134,28 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkd-4J-KCG">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Mlu-Z7-VP9"/>
+                                    <barButtonItem systemItem="refresh" id="xkT-CD-4UJ">
+                                        <connections>
+                                            <action selector="refreshButtonPressed:" destination="6Rh-vM-Ae9" id="adX-16-bLj"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8g1-5q-k4Q"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Hkd-4J-KCG" firstAttribute="trailing" secondItem="Qxx-dC-V6S" secondAttribute="trailing" id="79b-15-UMF"/>
                             <constraint firstItem="kSw-e5-A5S" firstAttribute="leading" secondItem="Qxx-dC-V6S" secondAttribute="leading" id="A6Z-ke-uWB"/>
+                            <constraint firstItem="Hkd-4J-KCG" firstAttribute="bottom" secondItem="Qxx-dC-V6S" secondAttribute="bottom" id="Izu-Pm-Yu4"/>
+                            <constraint firstItem="Hkd-4J-KCG" firstAttribute="leading" secondItem="Qxx-dC-V6S" secondAttribute="leading" id="Jjc-iY-Iut"/>
                             <constraint firstItem="kSw-e5-A5S" firstAttribute="top" secondItem="Qxx-dC-V6S" secondAttribute="top" id="Xre-Q5-u7R"/>
+                            <constraint firstItem="Hkd-4J-KCG" firstAttribute="top" secondItem="kSw-e5-A5S" secondAttribute="bottom" id="lS8-tw-cZp"/>
                             <constraint firstItem="kSw-e5-A5S" firstAttribute="trailing" secondItem="Qxx-dC-V6S" secondAttribute="trailing" id="wO9-iX-UhY"/>
-                            <constraint firstAttribute="bottom" secondItem="kSw-e5-A5S" secondAttribute="bottom" id="xkd-4b-HwZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qxx-dC-V6S"/>
                     </view>
@@ -173,15 +188,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="DjB-28-4dr">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="plus" catalog="system" id="nos-iS-nyM">
-                            <connections>
-                                <action selector="addPressed:" destination="BYZ-38-t0r" id="8K3-vY-sK0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="DjB-28-4dr"/>
                     <connections>
-                        <outlet property="addButton" destination="nos-iS-nyM" id="Tq2-Zy-gkU"/>
                         <outlet property="mapView" destination="KM0-z1-VwK" id="e5c-pe-la9"/>
                     </connections>
                 </viewController>
@@ -193,6 +201,5 @@
     <resources>
         <image name="list.dash" catalog="system" width="64" height="42"/>
         <image name="mappin" catalog="system" width="52" height="64"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>
