@@ -56,6 +56,8 @@ class FlickrClient {
         task.resume()
     }
     
+    // Loads pictures
+    
     class func downloadImage(img: String, completion: @escaping (Data?, Error?) -> Void){
         
         let url = URL(string: img)
