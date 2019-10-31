@@ -8,101 +8,59 @@
 
 import UIKit
 import MapKit
+import CoreData
 
-class MapVC: UIViewController{
+class MapVC: UIViewController, NSFetchedResultsControllerDelegate, MKMapViewDelegate{
     
-    var lat = Double()
-    var long = Double()
-    var imageURL = [String]()
-    var selectedAnnotation: MKPointAnnotation?
+    var dataController: DataController!
+    var fetchresultController: NSFetchedResultsController<Pin>!
     
     @IBOutlet weak var mapView: MKMapView!
     
+    func setupFRC() {
+        let fetchRequest: NSFetchRequest<Pin> = Pin.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        fetchresultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchresultController.delegate = self
+        do {
+            try fetchresultController.performFetch()
+        }catch {
+            print("Error while trying to fetch data: \(error.localizedDescription)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupFRC()
+        mapView.addAnnotations(fetchresultController.fetchedObjects ?? [])
+        setupLongPressGesture()
         mapView.delegate = self
+    }
+    
+    func setupLongPressGesture() {
         let longPressGestureRecogn = UILongPressGestureRecognizer(target: self, action: #selector(self.addAnnotation(press:)))
         longPressGestureRecogn.minimumPressDuration = 0.5
         mapView.addGestureRecognizer(longPressGestureRecogn)
-        
+    }
+
+    func annotationHandler(location: CLLocationCoordinate2D){
+        let annotation = Pin(context: dataController.viewContext)
+        annotation.latitude = location.latitude
+        annotation.longitude = location.longitude
+        if dataController.viewContext.hasChanges {
+            try? dataController.viewContext.save()
+        }
+        mapView.addAnnotation(annotation)
     }
     
     @objc func addAnnotation(press: UILongPressGestureRecognizer) {
-        
         if press.state == .began {
-            
-            let location = press.location(in: mapView)
-            let coordinates = mapView.convert(location, toCoordinateFrom: mapView)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinates
-            lat = annotation.coordinate.latitude
-            long = annotation.coordinate.longitude
-            mapView.addAnnotation(annotation)
-            let cl = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-            CLGeocoder().reverseGeocodeLocation(cl) { (placemark, error) in
-                if error != nil {
-                    annotation.title = "Unknown"
-                }else{
-                    if let place = placemark?[0] {
-                        annotation.title = "\(place.locality ?? "Unknown"), \(place.country ?? "Unknown")"
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        imageURL = []
-    }
-    
-    func handleGetImages(){
-        FlickrClient.getSearchURL(lat: selectedAnnotation?.coordinate.latitude ?? 0, long: selectedAnnotation?.coordinate.longitude ?? 0, totalPageNum: 50) { (images, pages, error) in
-            guard error == nil else {
-                print("Error!")
-                return
-            }
-            for i in images {
-                self.imageURL.append(i.url_m)
-            }
-            print(self.imageURL.count)
-            let controller = self.storyboard?.instantiateViewController(identifier: "ImagesCollectionVC") as! ImagesCollectionVC
-            controller.selectedPin = self.selectedAnnotation
-            controller.selectedImgURL = self.imageURL
-            self.show(controller, sender: nil)
+            let place = press.location(in: mapView)
+            let location = mapView.convert(place, toCoordinateFrom: mapView)
+            annotationHandler(location: location)
         }
     }
     
-}
-
-extension MapVC: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        
-        if pinView == nil{
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
-            pinView!.pinTintColor = .red
-            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        }else{
-            pinView!.annotation = annotation
-        }
-        
-        return pinView
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView{
-            handleGetImages()
-        }
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        self.selectedAnnotation = view.annotation as? MKPointAnnotation
-    }
     
     
 }
