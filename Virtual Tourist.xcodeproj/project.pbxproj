@@ -11,7 +11,6 @@
 		CB4EEA77236900EE0026D53D /* ImagesCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EEA73236900ED0026D53D /* ImagesCollectionVC.swift */; };
 		CB4EEA78236900EE0026D53D /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EEA74236900ED0026D53D /* ImageCollectionViewCell.swift */; };
 		CB4EEA79236900EE0026D53D /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EEA75236900ED0026D53D /* MapVC.swift */; };
-		CB4EEA7A236900EE0026D53D /* LocationsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EEA76236900EE0026D53D /* LocationsListVC.swift */; };
 		CB4EEA7F236901040026D53D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EEA7C236901040026D53D /* Secrets.swift */; };
 		CB4EEA80236901040026D53D /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EEA7D236901040026D53D /* FlickrClient.swift */; };
 		CB4EEA81236901040026D53D /* FlickrResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EEA7E236901040026D53D /* FlickrResponse.swift */; };
@@ -30,7 +29,6 @@
 		CB4EEA73236900ED0026D53D /* ImagesCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCollectionVC.swift; sourceTree = "<group>"; };
 		CB4EEA74236900ED0026D53D /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB4EEA75236900ED0026D53D /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
-		CB4EEA76236900EE0026D53D /* LocationsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsListVC.swift; sourceTree = "<group>"; };
 		CB4EEA7C236901040026D53D /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		CB4EEA7D236901040026D53D /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 		CB4EEA7E236901040026D53D /* FlickrResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrResponse.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 			children = (
 				CB4EEA74236900ED0026D53D /* ImageCollectionViewCell.swift */,
 				CB4EEA73236900ED0026D53D /* ImagesCollectionVC.swift */,
-				CB4EEA76236900EE0026D53D /* LocationsListVC.swift */,
 				CB4EEA75236900ED0026D53D /* MapVC.swift */,
 			);
 			path = Controllers;
@@ -208,7 +205,6 @@
 				CB4EEA78236900EE0026D53D /* ImageCollectionViewCell.swift in Sources */,
 				CB4EEA81236901040026D53D /* FlickrResponse.swift in Sources */,
 				CBDDBE8D236A58BF003CC3BC /* VirtualTourist.xcdatamodeld in Sources */,
-				CB4EEA7A236900EE0026D53D /* LocationsListVC.swift in Sources */,
 				CB4EEA79236900EE0026D53D /* MapVC.swift in Sources */,
 				CB4EEA80236901040026D53D /* FlickrClient.swift in Sources */,
 				CB4EEA77236900EE0026D53D /* ImagesCollectionVC.swift in Sources */,

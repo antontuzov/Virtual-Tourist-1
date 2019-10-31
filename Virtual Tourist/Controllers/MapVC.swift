@@ -37,6 +37,11 @@ class MapVC: UIViewController, NSFetchedResultsControllerDelegate, MKMapViewDele
         mapView.delegate = self
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        fetchresultController = nil
+    }
+    
     func setupLongPressGesture() {
         let longPressGestureRecogn = UILongPressGestureRecognizer(target: self, action: #selector(self.addAnnotation(press:)))
         longPressGestureRecogn.minimumPressDuration = 0.5
@@ -58,9 +63,26 @@ class MapVC: UIViewController, NSFetchedResultsControllerDelegate, MKMapViewDele
             let place = press.location(in: mapView)
             let location = mapView.convert(place, toCoordinateFrom: mapView)
             annotationHandler(location: location)
+            
         }
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        pinTapped(selectedPin: view.annotation as! Pin)
+        let selected = mapView.selectedAnnotations
+        for annotation in selected {
+            mapView.deselectAnnotation(annotation, animated: true)
+        }
+        
+    }
+    
+    func pinTapped(selectedPin: Pin){
+        let controller = storyboard?.instantiateViewController(identifier: "ImagesCollectionVC") as! ImagesCollectionVC
+        controller.selectedPin = selectedPin
+        controller.dataController = dataController
+        show(controller, sender: nil)
+    }
     
     
 }
