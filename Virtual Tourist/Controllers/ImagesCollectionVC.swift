@@ -71,7 +71,7 @@ class ImagesCollectionVC: UIViewController {
     }
 
     func downloadHandler(data: Data?, error: Error?){
-        print("It ss")
+        print("Loading images")
         if data == nil { return }
         let photo = Photo(context: dataController.viewContext)
         photo.image = data
@@ -109,5 +109,16 @@ extension ImagesCollectionVC: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension ImagesCollectionVC: NSFetchedResultsControllerDelegate {
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            collectionView.insertItems(at: [newIndexPath!])
+        case .delete:
+            collectionView.deleteItems(at: [indexPath!])
+        default:
+            break
+        }
+    }
     
 }
