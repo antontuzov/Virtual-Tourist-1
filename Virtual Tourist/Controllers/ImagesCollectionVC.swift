@@ -14,9 +14,11 @@ class ImagesCollectionVC: UIViewController {
     
     var selectedPin: Pin!
     var dataController: DataController!
-    var itemsSelected = [IndexPath]()
     var fetchedResultsController: NSFetchedResultsController<Photo>!
-    
+    var numberOfDownloadedPhotos: Int { return fetchedResultsController.fetchedObjects?.count ?? 0}
+    var number = 0
+    @IBOutlet weak var statusIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -39,8 +41,10 @@ class ImagesCollectionVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupFRC()
         if fetchedResultsController.fetchedObjects?.count == 0{
+            informationView.isHidden = true
             getImages()
         }
+        
     }
     
     override func viewDidLoad() {
@@ -48,7 +52,7 @@ class ImagesCollectionVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
-        
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,11 +62,10 @@ class ImagesCollectionVC: UIViewController {
     
     func getImages(){
         FlickrClient.getSearchURL(lat: selectedPin.coordinate.latitude, long: selectedPin.coordinate.longitude, totalPageNum: 25, completion: handlerPhotoSearch(photosResponse:error:))
-        
     }
     
     @IBAction func refreshButtonPressed(_ sender: Any) {
-        refreshButton.isEnabled = false
+        
         let delete = fetchedResultsController.fetchedObjects
         for i in 0...delete!.count{
             if i <= delete!.count - 1{
@@ -77,21 +80,22 @@ class ImagesCollectionVC: UIViewController {
         if dataController.viewContext.hasChanges {
             try? dataController.viewContext.save()
         }
-        
+        informationView.isHidden = true
         
     }
     
     func handlerPhotoSearch(photosResponse: [PhotoStruct], error: Error?){
         if photosResponse.count == 0 {
             print("No images")
-            getImages()
+            informationView.isHidden = false
         }else{
             for i in photosResponse {
                 FlickrClient.downloadImage(farm: i.farm, serverId: i.server, photoId: i.id, secret: i.secret, completion: downloadHandler(data:error:))
             }
+            number = photosResponse.count
             DispatchQueue.main.async {
-                self.refreshButton.isEnabled = true
                 self.collectionView.reloadData()
+                self.informationView.isHidden = true
             }
         }
         
@@ -107,6 +111,19 @@ class ImagesCollectionVC: UIViewController {
         if dataController.viewContext.hasChanges {
             try? dataController.viewContext.save()
         }
+    }
+    
+    func checkStatus(_ status: Bool){
+        if status {
+            DispatchQueue.main.async {
+                self.statusIndicator.startAnimating()
+            }
+        }else{
+            DispatchQueue.main.async {
+                self.statusIndicator.stopAnimating()
+            }
+        }
+        refreshButton.isEnabled = !status
     }
     
 }
