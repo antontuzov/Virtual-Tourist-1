@@ -14,8 +14,10 @@ class ImagesCollectionVC: UIViewController {
     
     var selectedPin: Pin!
     var dataController: DataController!
+    var itemsSelected = [IndexPath]()
     var fetchedResultsController: NSFetchedResultsController<Photo>!
     
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     
     func setupFRC(){
@@ -37,7 +39,7 @@ class ImagesCollectionVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupFRC()
         if fetchedResultsController.fetchedObjects?.count == 0{
-            FlickrClient.getSearchURL(lat: selectedPin.coordinate.latitude, long: selectedPin.coordinate.longitude, totalPageNum: 25, completion: handlerPhotoSearch(photosResponse:error:))
+            getImages()
         }
     }
     
@@ -54,22 +56,47 @@ class ImagesCollectionVC: UIViewController {
         fetchedResultsController = nil
     }
     
-    @IBAction func refreshButtonPressed(_ sender: Any) {
-        print("Refresh button pressed")
+    func getImages(){
+        FlickrClient.getSearchURL(lat: selectedPin.coordinate.latitude, long: selectedPin.coordinate.longitude, totalPageNum: 25, completion: handlerPhotoSearch(photosResponse:error:))
+        
     }
- 
+    
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+        refreshButton.isEnabled = false
+        let delete = fetchedResultsController.fetchedObjects
+        for i in 0...delete!.count{
+            if i <= delete!.count - 1{
+                print("For i:\(i)")
+                dataController.viewContext.delete(delete![i])
+                print("Count: \(delete!.count)")
+                try? dataController.viewContext.save()
+            }
+            
+        }
+        getImages()
+        if dataController.viewContext.hasChanges {
+            try? dataController.viewContext.save()
+        }
+        
+        
+    }
+    
     func handlerPhotoSearch(photosResponse: [PhotoStruct], error: Error?){
         if photosResponse.count == 0 {
             print("No images")
+            getImages()
+        }else{
+            for i in photosResponse {
+                FlickrClient.downloadImage(farm: i.farm, serverId: i.server, photoId: i.id, secret: i.secret, completion: downloadHandler(data:error:))
+            }
+            DispatchQueue.main.async {
+                self.refreshButton.isEnabled = true
+                self.collectionView.reloadData()
+            }
         }
-        for i in photosResponse {
-            FlickrClient.downloadImage(farm: i.farm, serverId: i.server, photoId: i.id, secret: i.secret, completion: downloadHandler(data:error:))
-        }
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
+        
     }
-
+    
     func downloadHandler(data: Data?, error: Error?){
         print("Loading images")
         if data == nil { return }
@@ -86,11 +113,7 @@ class ImagesCollectionVC: UIViewController {
 
 extension ImagesCollectionVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let images = fetchedResultsController.fetchedObjects {
-            return images.count
-        }else{
-            return 0
-        }
+        return fetchedResultsController.fetchedObjects?.count ?? 0
         
     }
     
@@ -100,11 +123,13 @@ extension ImagesCollectionVC: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selectedImgURL.remove(at: indexPath.row)
-//        collectionView.reloadData()
-//        collectionView.deselectItem(at: indexPath, animated: true)
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let imageToRemove = fetchedResultsController.object(at: indexPath)
+        dataController.viewContext.delete(imageToRemove)
+        if dataController.viewContext.hasChanges {
+            try? dataController.viewContext.save()
+        }
+    }
     
 }
 

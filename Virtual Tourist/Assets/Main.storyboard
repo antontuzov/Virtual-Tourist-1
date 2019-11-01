@@ -90,6 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="kSw-e5-A5S" id="bCk-7M-YEL"/>
+                        <outlet property="refreshButton" destination="xkT-CD-4UJ" id="Nu2-IN-wv7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auy-OC-xLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
