@@ -14,7 +14,7 @@ class MapVC: UIViewController, NSFetchedResultsControllerDelegate, MKMapViewDele
     
     var dataController: DataController!
     var fetchresultController: NSFetchedResultsController<Pin>!
-    
+    var selectedAnnotation: MKAnnotation!
     @IBOutlet weak var mapView: MKMapView!
     
     func setupFRC() {
@@ -47,11 +47,19 @@ class MapVC: UIViewController, NSFetchedResultsControllerDelegate, MKMapViewDele
         longPressGestureRecogn.minimumPressDuration = 0.5
         mapView.addGestureRecognizer(longPressGestureRecogn)
     }
-
+    
     func annotationHandler(location: CLLocationCoordinate2D){
         let annotation = Pin(context: dataController.viewContext)
         annotation.latitude = location.latitude
         annotation.longitude = location.longitude
+        let geocoder = CLGeocoder()
+        let coordinates = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        geocoder.reverseGeocodeLocation(coordinates) { (placemark, error) in
+            if let place = placemark?[0] {
+                print("This gets called")
+                annotation.locationName = "\(place.locality ?? "Unknown") , \(place.country ?? "Unknown")"
+            }
+        }
         if dataController.viewContext.hasChanges {
             try? dataController.viewContext.save()
         }
@@ -67,15 +75,31 @@ class MapVC: UIViewController, NSFetchedResultsControllerDelegate, MKMapViewDele
         }
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        pinTapped(selectedPin: view.annotation as! Pin)
-        let selected = mapView.selectedAnnotations
-        for annotation in selected {
-            mapView.deselectAnnotation(annotation, animated: true)
-        }
-        
-    }
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        let identifier = "pin"
+//        var view: MKPinAnnotationView
+//        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView{
+//            dequeuedView.annotation = annotation
+//            view = dequeuedView
+//            return view
+//        }else{
+//            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//            view.canShowCallout = true
+//            view.calloutOffset = CGPoint(x: -5, y: 5)
+//            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+//        }
+//        return view
+//    }
+    
+    //    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    //
+    //        pinTapped(selectedPin: view.annotation as! Pin)
+    //        let selected = mapView.selectedAnnotations
+    //        for annotation in selected {
+    //            mapView.deselectAnnotation(annotation, animated: true)
+    //        }
+    //
+    //    }
     
     func pinTapped(selectedPin: Pin){
         let controller = storyboard?.instantiateViewController(identifier: "ImagesCollectionVC") as! ImagesCollectionVC
