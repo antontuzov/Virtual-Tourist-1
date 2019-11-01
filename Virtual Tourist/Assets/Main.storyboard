@@ -84,9 +84,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1ZO-aB-19M">
-                                        <rect key="frame" x="177" y="770" width="60" height="20"/>
-                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -94,21 +91,24 @@
                                     <constraint firstItem="gFy-ZL-Yrc" firstAttribute="leading" secondItem="3u8-0n-gka" secondAttribute="leading" constant="8" id="8mB-bI-lja"/>
                                     <constraint firstAttribute="bottom" secondItem="gFy-ZL-Yrc" secondAttribute="bottom" constant="284" id="Mkd-8h-g91"/>
                                     <constraint firstAttribute="trailing" secondItem="gFy-ZL-Yrc" secondAttribute="trailing" constant="8" id="RfU-rS-GwD"/>
-                                    <constraint firstAttribute="trailing" secondItem="1ZO-aB-19M" secondAttribute="trailing" constant="177" id="Wxt-Zh-Pqx"/>
-                                    <constraint firstAttribute="bottom" secondItem="1ZO-aB-19M" secondAttribute="bottom" constant="8" id="hak-Tk-xUT"/>
-                                    <constraint firstItem="1ZO-aB-19M" firstAttribute="leading" secondItem="3u8-0n-gka" secondAttribute="leading" constant="177" id="zSz-ey-MqV"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1ZO-aB-19M">
+                                <rect key="frame" x="177" y="770" width="60" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3u8-0n-gka" firstAttribute="leading" secondItem="Qxx-dC-V6S" secondAttribute="leading" id="4ve-ME-KTw"/>
+                            <constraint firstItem="1ZO-aB-19M" firstAttribute="leading" secondItem="Qxx-dC-V6S" secondAttribute="leading" constant="177" id="5Wf-L8-QCk"/>
                             <constraint firstItem="3u8-0n-gka" firstAttribute="trailing" secondItem="Qxx-dC-V6S" secondAttribute="trailing" id="6ek-hN-8ee"/>
                             <constraint firstItem="Hkd-4J-KCG" firstAttribute="trailing" secondItem="Qxx-dC-V6S" secondAttribute="trailing" id="79b-15-UMF"/>
                             <constraint firstItem="kSw-e5-A5S" firstAttribute="leading" secondItem="Qxx-dC-V6S" secondAttribute="leading" id="A6Z-ke-uWB"/>
                             <constraint firstItem="Hkd-4J-KCG" firstAttribute="bottom" secondItem="Qxx-dC-V6S" secondAttribute="bottom" id="Izu-Pm-Yu4"/>
                             <constraint firstItem="Hkd-4J-KCG" firstAttribute="leading" secondItem="Qxx-dC-V6S" secondAttribute="leading" id="Jjc-iY-Iut"/>
+                            <constraint firstItem="Qxx-dC-V6S" firstAttribute="trailing" secondItem="1ZO-aB-19M" secondAttribute="trailing" constant="177" id="N8z-uf-Kjp"/>
                             <constraint firstItem="3u8-0n-gka" firstAttribute="top" secondItem="E3d-Ow-9hs" secondAttribute="top" id="THA-3Q-bHP"/>
+                            <constraint firstItem="Hkd-4J-KCG" firstAttribute="top" secondItem="1ZO-aB-19M" secondAttribute="bottom" constant="8" id="VlR-1t-juM"/>
                             <constraint firstItem="kSw-e5-A5S" firstAttribute="top" secondItem="Qxx-dC-V6S" secondAttribute="top" id="Xre-Q5-u7R"/>
                             <constraint firstItem="Hkd-4J-KCG" firstAttribute="top" secondItem="3u8-0n-gka" secondAttribute="bottom" id="Zhc-ab-Jxb"/>
                             <constraint firstItem="Hkd-4J-KCG" firstAttribute="top" secondItem="kSw-e5-A5S" secondAttribute="bottom" id="lS8-tw-cZp"/>

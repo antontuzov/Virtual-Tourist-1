@@ -15,8 +15,7 @@ class ImagesCollectionVC: UIViewController {
     var selectedPin: Pin!
     var dataController: DataController!
     var fetchedResultsController: NSFetchedResultsController<Photo>!
-    var numberOfDownloadedPhotos: Int { return fetchedResultsController.fetchedObjects?.count ?? 0}
-    var number = 0
+    var fetchedResults = 0
     @IBOutlet weak var statusIndicator: UIActivityIndicatorView!
     @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
@@ -52,7 +51,10 @@ class ImagesCollectionVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
-    
+        if fetchedResults != 0 {
+            informationView.isHidden = true
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,7 +67,7 @@ class ImagesCollectionVC: UIViewController {
     }
     
     @IBAction func refreshButtonPressed(_ sender: Any) {
-        
+        checkStatus(true)
         let delete = fetchedResultsController.fetchedObjects
         for i in 0...delete!.count{
             if i <= delete!.count - 1{
@@ -92,13 +94,14 @@ class ImagesCollectionVC: UIViewController {
             for i in photosResponse {
                 FlickrClient.downloadImage(farm: i.farm, serverId: i.server, photoId: i.id, secret: i.secret, completion: downloadHandler(data:error:))
             }
-            number = photosResponse.count
+            fetchedResults = fetchedResultsController.fetchedObjects?.count ?? 0
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.informationView.isHidden = true
             }
+            refreshButton.isEnabled = true
         }
-        
+        checkStatus(false)
     }
     
     func downloadHandler(data: Data?, error: Error?){
@@ -149,6 +152,7 @@ extension ImagesCollectionVC: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
 }
+
 
 extension ImagesCollectionVC: NSFetchedResultsControllerDelegate {
     
