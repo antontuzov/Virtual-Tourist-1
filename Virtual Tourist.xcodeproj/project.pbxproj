@@ -20,6 +20,7 @@
 		CBAAB7D3236B402700057648 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAB7D2236B402700057648 /* AppDelegate.swift */; };
 		CBAAB7D5236B402C00057648 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAB7D4236B402C00057648 /* SceneDelegate.swift */; };
 		CBAAB7D7236B4B0600057648 /* Pin + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAB7D6236B4B0600057648 /* Pin + Extension.swift */; };
+		CBBCAD6F236D079800E296E8 /* NSFRC + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCAD6E236D079800E296E8 /* NSFRC + Extension.swift */; };
 		CBDDBE8D236A58BF003CC3BC /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBE8B236A58BF003CC3BC /* VirtualTourist.xcdatamodeld */; };
 		CBDDBE8F236A59A1003CC3BC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBE8E236A59A1003CC3BC /* DataController.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		CBAAB7D2236B402700057648 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBAAB7D4236B402C00057648 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CBAAB7D6236B4B0600057648 /* Pin + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pin + Extension.swift"; sourceTree = "<group>"; };
+		CBBCAD6E236D079800E296E8 /* NSFRC + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFRC + Extension.swift"; sourceTree = "<group>"; };
 		CBDA61872367CB0D00CC2393 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDA61982367CB1200CC2393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBDDBE8C236A58BF003CC3BC /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		CBBCAD6D236D075E00E296E8 /* Additional helper tools */ = {
+			isa = PBXGroup;
+			children = (
+				CBBCAD6E236D079800E296E8 /* NSFRC + Extension.swift */,
+			);
+			path = "Additional helper tools";
+			sourceTree = "<group>";
+		};
 		CBDA617E2367CB0D00CC2393 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		CBDA61A22367CECF00CC2393 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CBBCAD6D236D075E00E296E8 /* Additional helper tools */,
 				CB4EEA74236900ED0026D53D /* ImageCollectionViewCell.swift */,
 				CB4EEA73236900ED0026D53D /* ImagesCollectionVC.swift */,
 				CB4EEA75236900ED0026D53D /* MapVC.swift */,
@@ -204,6 +215,7 @@
 				CB4EEA7F236901040026D53D /* Secrets.swift in Sources */,
 				CB4EEA78236900EE0026D53D /* ImageCollectionViewCell.swift in Sources */,
 				CB4EEA81236901040026D53D /* FlickrResponse.swift in Sources */,
+				CBBCAD6F236D079800E296E8 /* NSFRC + Extension.swift in Sources */,
 				CBDDBE8D236A58BF003CC3BC /* VirtualTourist.xcdatamodeld in Sources */,
 				CB4EEA79236900EE0026D53D /* MapVC.swift in Sources */,
 				CB4EEA80236901040026D53D /* FlickrClient.swift in Sources */,
